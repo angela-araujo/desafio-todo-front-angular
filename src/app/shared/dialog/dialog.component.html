@@ -1,0 +1,45 @@
+<h1 *ngIf="!isChange" mat-dialog-title>Create To-Do</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Edit To-Do</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>ID</mat-label>
+    <input matInput [(ngModel)]="data.id">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Título</mat-label>
+    <input matInput [(ngModel)]="data.title">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descrição</mat-label>
+    <input matInput [(ngModel)]="data.description">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Início</mat-label>
+    <input matInput [(ngModel)]="data.startAt">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Término</mat-label>
+    <input matInput [(ngModel)]="data.finishAt">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Prazo</mat-label>
+    <input matInput [(ngModel)]="data.deadLine">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Pessoa</mat-label>
+    <input matInput [(ngModel)]="data.personId">
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button *ngIf="!isChange" mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+  <button *ngIf="isChange"  mat-button [mat-dialog-close]="data" cdkFocusInitial>Edit</button>
+</div>
