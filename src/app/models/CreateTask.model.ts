@@ -1,9 +1,7 @@
-export interface ITask {
-    id: number,
+export interface ICreateTask {
     title: string,
     description: string,
     startAt: string,
-    finishAt: string,
     deadLine: string,
     personId: number
 }

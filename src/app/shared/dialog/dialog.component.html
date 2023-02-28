@@ -1,45 +1,59 @@
-<h1 *ngIf="!isChange" mat-dialog-title>Create To-Do</h1>
-<h1 *ngIf="isChange" mat-dialog-title>Edit To-Do</h1>
-<div mat-dialog-content>
-  <mat-form-field appearance="fill">
+<h1 *ngIf="!isChange" mat-dialog-title>Criar tarefa</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Editar tarefa</h1>
+<div mat-dialog-content class="mat-container">
+  <mat-form-field appearance="fill" [ngStyle]="{'width': '50px'}">
     <mat-label>ID</mat-label>
-    <input matInput [(ngModel)]="data.id">
+    <input matInput [(ngModel)]="data.id" readonly="readonly">
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" [ngStyle]="{'width': '400px'}">
     <mat-label>Título</mat-label>
-    <input matInput [(ngModel)]="data.title">
+    <input matInput [(ngModel)]="data.title" required="required">
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" [ngStyle]="{'width': '450px'}">
     <mat-label>Descrição</mat-label>
     <input matInput [(ngModel)]="data.description">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Início</mat-label>
-    <input matInput [(ngModel)]="data.startAt">
+    <input matInput [matDatepicker]="pickerStartAt" [(ngModel)]="data.startAt">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="pickerStartAt">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #pickerStartAt></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Término</mat-label>
-    <input matInput [(ngModel)]="data.finishAt">
+    <input matInput [matDatepicker]="pickerFinishAt" [(ngModel)]="data.finishAt">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="pickerFinishAt">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #pickerFinishAt></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Prazo</mat-label>
-    <input matInput [(ngModel)]="data.deadLine">
+    <input matInput [matDatepicker]="pickerDeadLine" [(ngModel)]="data.deadLine" required="required">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="pickerDeadLine">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #pickerDeadLine></mat-datepicker>    
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Pessoa</mat-label>
     <input matInput [(ngModel)]="data.personId">
   </mat-form-field>
-
 </div>
 
 <div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button *ngIf="!isChange" mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
-  <button *ngIf="isChange"  mat-button [mat-dialog-close]="data" cdkFocusInitial>Edit</button>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button *ngIf="!isChange" mat-button [mat-dialog-close]="data" cdkFocusInitial>Criar</button>
+  <button *ngIf="isChange" mat-button [mat-dialog-close]="data" cdkFocusInitial>Editar</button>
 </div>

@@ -1,6 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { IPerson } from './../../models/Person.model';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Task } from 'src/app/models/Task.model';
+import { ITask } from 'src/app/models/Task.model';
 
 @Component({
   selector: 'app-dialog',
@@ -8,12 +10,14 @@ import { Task } from 'src/app/models/Task.model';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-  task!: Task;
+  @ViewChild(MatDatepicker) 
+  datepicker!: MatDatepicker<Date>;
+  task!: ITask;
   isChange!: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) 
-    public data: Task,
+    public data: ITask,
     public dialogRef: MatDialogRef<DialogComponent>
   ) { }
 
